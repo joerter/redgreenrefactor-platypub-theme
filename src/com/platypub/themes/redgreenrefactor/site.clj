@@ -1,4 +1,4 @@
-(ns com.platypub.themes.default.site
+(ns com.platypub.themes.redgreenrefactor.site
   (:require [babashka.fs :as fs]
             [clojure.edn :as edn]
             [clojure.string :as str]

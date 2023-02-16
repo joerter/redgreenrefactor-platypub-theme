@@ -1,4 +1,4 @@
-(ns com.platypub.themes.default.config
+(ns com.platypub.themes.redgreenrefactor.config
   (:require [clojure.java.io :as io]))
 
 (def config

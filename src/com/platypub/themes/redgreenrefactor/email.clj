@@ -1,4 +1,4 @@
-(ns com.platypub.themes.default.email
+(ns com.platypub.themes.redgreenrefactor.email
   (:require [babashka.fs :as fs]
             [clojure.string :as str]
             [clojure.java.io :as io]
