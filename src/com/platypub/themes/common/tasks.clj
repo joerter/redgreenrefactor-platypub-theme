@@ -28,7 +28,7 @@
           "-i" "main.css"
           "-i" "config.edn"
           "-c" "bb -on-save"))
-  (shell "netlify dev -d public"))
+  (shell "npx netlify dev -d public"))
 
 (defn clean []
   (fs/delete-tree "public"))
