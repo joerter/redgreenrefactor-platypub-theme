@@ -79,15 +79,15 @@
      (if-some [url (not-empty (:author-url site))]
        [:a.hover:underline
         {:class (if card
-                  "text-[2.5rem]"
+                  "text-[2.5rem] text-white"
                   "text-blue-600")
          :href url
          :target "_blank"}
         (:author-name site)]
        (:author-name site))]
     [:div {:class (if card "text-[2.2rem]" "text-[90%]")
-           :style {:line-height "1"
-                   :color "#4b5563"}}
+           :style (if-not card {:line-height "1"
+                   :color "#4b5563"} {:color "rgb(100 116 139)"})}
      (common/format-date "d MMM yyyy" (:published-at post))]]])
 
 (def errors
@@ -335,16 +335,17 @@
   (common/base-html
     opts
     [:div.mx-auto.border.border-black
-     {:style "width:1202px;height:620px"}
+     {:style {:width "1202px" :height "620px" :background-color (:primary-color site)}}
      [:div.flex.flex-col.justify-center.h-full.p-12
-      [:div [:img {:src "/images/card-logo.png"
+      [:div [:img {:src (:logo-image site)
              :alt "Logo"
              :style {:max-height "60px"}}]]
       [:div {:class "h-[1.5rem]"}]
-      [:h1.font-bold.leading-none
+      [:h1.font-bold.leading-none.text-white
        {:class "text-[6rem]"}
        (str/replace (:title post) #"^\[draft\] " "")]
-      [:div {:class "h-[2.5rem]"}]]]))
+      [:div {:class "h-[2.5rem]"}]
+      (byline (assoc opts :byline/card true))]]))
 
 (defn cards! [{:keys [posts] :as opts}]
   ;; In Firefox, you can inspect element -> screenshot node, then use as the
